@@ -1,4 +1,3 @@
-
 'use client'
 
 interface OnboardingFlowProps {
@@ -8,7 +7,7 @@ interface OnboardingFlowProps {
 
 export function OnboardingFlow({ onConnect, onGetStarted }: OnboardingFlowProps) {
   return (
-    <div className="space-y-6 animate-slide-up">
+    <div className="space-y-6 animate-slide-up delay-75">
       <div className="text-center space-y-4">
         <h2 className="text-display text-primary">
           Amplify Your Brand with Micro-Influencer Power

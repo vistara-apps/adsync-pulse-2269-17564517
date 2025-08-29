@@ -1,4 +1,3 @@
-
 'use client'
 
 import {
@@ -24,6 +23,8 @@ import { AppShell } from './components/AppShell'
 import { InfluencerDiscovery } from './components/InfluencerDiscovery'
 import { CampaignDashboard } from './components/CampaignDashboard'
 import { OnboardingFlow } from './components/OnboardingFlow'
+import { NavigationTabs } from './components/NavigationTabs'
+import { LoadingSpinner } from './components/LoadingSpinner'
 
 type ViewType = 'onboarding' | 'discovery' | 'dashboard'
 
@@ -32,6 +33,7 @@ export default function App() {
   const [frameAdded, setFrameAdded] = useState(false)
   const [currentView, setCurrentView] = useState<ViewType>('onboarding')
   const [isConnected, setIsConnected] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   const addFrame = useAddFrame()
   const openUrl = useOpenUrl()
@@ -49,16 +51,31 @@ export default function App() {
 
   const handleGetStarted = useCallback(() => {
     if (isConnected) {
-      setCurrentView('discovery')
+      setIsLoading(true)
+      // Simulate loading delay
+      setTimeout(() => {
+        setCurrentView('discovery')
+        setIsLoading(false)
+      }, 500)
     }
   }, [isConnected])
 
   const handleViewDashboard = useCallback(() => {
-    setCurrentView('dashboard')
+    setIsLoading(true)
+    // Simulate loading delay
+    setTimeout(() => {
+      setCurrentView('dashboard')
+      setIsLoading(false)
+    }, 500)
   }, [])
 
   const handleCreateCampaign = useCallback(() => {
-    setCurrentView('discovery')
+    setIsLoading(true)
+    // Simulate loading delay
+    setTimeout(() => {
+      setCurrentView('discovery')
+      setIsLoading(false)
+    }, 500)
   }, [])
 
   // Primary button configuration based on current view
@@ -103,7 +120,7 @@ export default function App() {
   return (
     <AppShell
       header={
-        <div className="flex justify-between items-center">
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-3">
           <div className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-primary rounded-md flex items-center justify-center">
               <span className="text-white font-bold text-sm">AP</span>
@@ -115,7 +132,7 @@ export default function App() {
               <ConnectWallet>
                 <div className="flex items-center space-x-2">
                   <Avatar className="w-6 h-6" />
-                  <Name className="text-sm" />
+                  <Name className="text-sm hidden sm:inline" />
                 </div>
               </ConnectWallet>
               <WalletDropdown>
@@ -143,17 +160,42 @@ export default function App() {
       }
     >
       <div className="animate-fade-in">
-        {currentView === 'onboarding' && (
-          <OnboardingFlow 
-            onConnect={() => setIsConnected(true)}
-            onGetStarted={() => setCurrentView('discovery')}
+        {isConnected && (
+          <NavigationTabs 
+            currentView={currentView}
+            onChangeView={(view) => {
+              setIsLoading(true);
+              setTimeout(() => {
+                setCurrentView(view as ViewType);
+                setIsLoading(false);
+              }, 500);
+            }}
+            views={[
+              { id: 'discovery', label: 'Discover' },
+              { id: 'dashboard', label: 'Dashboard' }
+            ]}
           />
         )}
-        {currentView === 'discovery' && (
-          <InfluencerDiscovery onViewDashboard={() => setCurrentView('dashboard')} />
-        )}
-        {currentView === 'dashboard' && (
-          <CampaignDashboard onCreateCampaign={() => setCurrentView('discovery')} />
+        
+        {isLoading ? (
+          <div className="py-20 flex justify-center items-center">
+            <LoadingSpinner size="large" color="primary" />
+          </div>
+        ) : (
+          <>
+            {currentView === 'onboarding' && (
+              <OnboardingFlow 
+                onConnect={() => setIsConnected(true)}
+                onGetStarted={handleGetStarted}
+              />
+            )}
+            {currentView === 'discovery' && (
+              <InfluencerDiscovery onViewDashboard={handleViewDashboard} />
+            )}
+            {currentView === 'dashboard' && (
+              <CampaignDashboard onCreateCampaign={handleCreateCampaign} />
+            )}
+          </>
         )}
       </div>
     </AppShell>

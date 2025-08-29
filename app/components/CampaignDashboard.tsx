@@ -1,4 +1,3 @@
-
 'use client'
 
 import { useState } from 'react'
@@ -50,13 +49,13 @@ export function CampaignDashboard({ onCreateCampaign }: CampaignDashboardProps) 
   }
 
   return (
-    <div className="space-y-6 animate-slide-up">
-      <div className="flex justify-between items-center">
-        <div>
+    <div className="space-y-6 animate-fade-in">
+      <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-0">
+        <div className="text-center sm:text-left">
           <h2 className="text-display text-primary">Campaign Dashboard</h2>
           <p className="text-body text-text/70">Monitor your campaign performance</p>
         </div>
-        <button onClick={onCreateCampaign} className="btn-secondary text-sm">
+        <button onClick={onCreateCampaign} className="btn-secondary text-sm w-full sm:w-auto">
           + New Campaign
         </button>
       </div>
@@ -101,7 +100,7 @@ export function CampaignDashboard({ onCreateCampaign }: CampaignDashboardProps) 
       <div className="space-y-4">
         <h3 className="text-heading">Performance Overview</h3>
         
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
           <MetricDisplay
             label="Total Reach"
             value={selectedCampaign.metrics.reach.toLocaleString()}

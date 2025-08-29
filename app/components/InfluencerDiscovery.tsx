@@ -77,10 +77,10 @@ const mockInfluencers = [
 const niches = ['All', 'Tech & Startups', 'E-commerce', 'Lifestyle', 'Finance', 'Health & Wellness', 'Gaming'];
 
 interface InfluencerDiscoveryProps {
-  onInfluencersSelected: (influencers: Influencer[]) => void;
+  onViewDashboard: () => void;
 }
 
-export function InfluencerDiscovery({ onInfluencersSelected }: InfluencerDiscoveryProps) {
+export function InfluencerDiscovery({ onViewDashboard }: InfluencerDiscoveryProps) {
   const [selectedNiche, setSelectedNiche] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedInfluencers, setSelectedInfluencers] = useState<string[]>([]);
@@ -114,15 +114,14 @@ export function InfluencerDiscovery({ onInfluencersSelected }: InfluencerDiscove
   };
 
   const handleContinue = () => {
-    const selected = mockInfluencers.filter(inf => selectedInfluencers.includes(inf.id));
-    onInfluencersSelected(selected);
+    onViewDashboard();
   };
 
   return (
     <div className="space-y-6">
       <div className="text-center space-y-2">
-        <h2 className="text-xl font-semibold text-text">Discover Micro-Influencers</h2>
-        <p className="text-sm text-text/70">Find verified creators in your niche</p>
+        <h2 className="text-heading text-text">Discover Micro-Influencers</h2>
+        <p className="text-caption">Find verified creators in your niche</p>
       </div>
 
       {/* Search and Filter */}
@@ -133,8 +132,18 @@ export function InfluencerDiscovery({ onInfluencersSelected }: InfluencerDiscove
             placeholder="Search influencers..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full px-4 py-3 bg-surface border border-border rounded-md text-text placeholder:text-text/50 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+            className="w-full px-4 py-3 bg-surface border border-border rounded-md text-text placeholder:text-text/50 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm focus:shadow"
           />
+          {searchTerm ? (
+            <button 
+              onClick={() => setSearchTerm('')}
+              className="absolute right-10 top-1/2 -translate-y-1/2 text-text/40 hover:text-text/70 transition-colors"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          ) : null}
           <div className="absolute right-3 top-1/2 -translate-y-1/2">
             <svg className="w-5 h-5 text-text/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -142,12 +151,12 @@ export function InfluencerDiscovery({ onInfluencersSelected }: InfluencerDiscove
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
           {niches.map((niche) => (
             <button
               key={niche}
               onClick={() => setSelectedNiche(niche)}
-              className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
+              className={`px-2 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium transition-colors ${
                 selectedNiche === niche
                   ? 'bg-primary text-white'
                   : 'bg-surface border border-border text-text hover:bg-border/50'

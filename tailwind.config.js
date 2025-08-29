@@ -1,4 +1,3 @@
-
 module.exports = {
   content: ['./app/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
@@ -25,8 +24,11 @@ module.exports = {
         card: '0 4px 12px hsla(210, 15%, 75%, 0.2)',
       },
       animation: {
-        'fade-in': 'fadeIn 0.25s cubic-bezier(0.22,1,0.36,1)',
-        'slide-up': 'slideUp 0.25s cubic-bezier(0.22,1,0.36,1)',
+        'fade-in': 'fadeIn 0.3s cubic-bezier(0.22,1,0.36,1)',
+        'slide-up': 'slideUp 0.3s cubic-bezier(0.22,1,0.36,1)',
+        'slide-right': 'slideRight 0.3s cubic-bezier(0.22,1,0.36,1)',
+        'slide-left': 'slideLeft 0.3s cubic-bezier(0.22,1,0.36,1)',
+        'pulse-once': 'pulse 0.5s ease-in-out',
       },
     },
   },

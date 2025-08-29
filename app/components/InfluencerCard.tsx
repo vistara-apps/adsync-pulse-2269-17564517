@@ -1,4 +1,3 @@
-
 'use client'
 
 interface Influencer {
@@ -43,8 +42,12 @@ export function InfluencerCard({
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-3">
           <div className="relative">
-            <div className="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center text-xl">
-              {influencer.avatar}
+            <div className="w-12 h-12 bg-accent/20 rounded-full overflow-hidden">
+              <img 
+                src={influencer.avatar} 
+                alt={`${influencer.name}'s avatar`}
+                className="w-full h-full object-cover"
+              />
             </div>
             {influencer.verificationStatus === 'verified' && (
               <div className="absolute -top-1 -right-1 w-4 h-4 bg-accent rounded-full flex items-center justify-center">
@@ -55,13 +58,13 @@ export function InfluencerCard({
           
           <div className="flex-1">
             <div className="flex items-center space-x-2">
-              <h3 className="font-semibold text-text">{influencer.name}</h3>
-              <span className="text-xs text-text/60">@{influencer.farcasterId}</span>
+              <h3 className="text-subheading text-text">{influencer.name}</h3>
+              <span className="text-small">@{influencer.farcasterId}</span>
             </div>
-            <p className="text-sm text-accent font-medium">{influencer.niche}</p>
+            <p className="text-caption text-accent font-medium">{influencer.niche}</p>
             
             {variant === 'detailed' && (
-              <div className="flex items-center space-x-4 mt-2 text-xs text-text/70">
+              <div className="flex items-center space-x-4 mt-2 text-small">
                 <span>{formatNumber(influencer.followers)} followers</span>
                 <span>{influencer.engagementRate}% engagement</span>
               </div>
@@ -71,7 +74,7 @@ export function InfluencerCard({
         
         <div className="text-right">
           {variant === 'compact' && (
-            <div className="text-xs text-text/70 space-y-1">
+            <div className="text-small space-y-1">
               <div>{formatNumber(influencer.followers)} followers</div>
               <div className="font-medium text-accent">{influencer.engagementRate}% eng.</div>
             </div>
