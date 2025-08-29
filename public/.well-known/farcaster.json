@@ -10,14 +10,14 @@
     "subtitle": "Built with Zara",
     "description": "AdSync Pulse is a Base Mini App built with Zara.",
     "iconUrl": "https://0co.to/images/zara-2.png",
-    "homeUrl": "https://2269f95c-d147-4370-b7b8-5ce731e2dc77.vistara.dev",
-    "splashImageUrl": "https://dummyimage.com/200x200/0a0b0d/ffffff.png&text=Splash",
+    "homeUrl": "https://2269f95cd1474370b7b85ce731e2dc77-053g-c0xk8f9dd-vistara.vercel.app",
+    "splashImageUrl": "https://2269f95cd1474370b7b85ce731e2dc77-053g-c0xk8f9dd-vistara.vercel.app/splash.png",
     "splashBackgroundColor": "#000000",
-    "heroImageUrl": "https://dummyimage.com/1200x628/0a0b0d/ffffff.png&text=Hero",
+    "heroImageUrl": "https://2269f95cd1474370b7b85ce731e2dc77-053g-c0xk8f9dd-vistara.vercel.app/image.png",
     "tagline": "AdSync Pulse",
     "screenshotUrls": [
-      "https://dummyimage.com/1200x628/0a0b0d/ffffff.png&text=Shot1",
-      "https://dummyimage.com/1200x628/0a0b0d/ffffff.png&text=Shot2"
+      "https://2269f95cd1474370b7b85ce731e2dc77-053g-c0xk8f9dd-vistara.vercel.app/screenshot.png",
+      "https://2269f95cd1474370b7b85ce731e2dc77-053g-c0xk8f9dd-vistara.vercel.app/screenshot.png"
     ],
     "primaryCategory": "social",
     "tags": [
@@ -25,6 +25,6 @@
       "miniapp",
       "onchainkit"
     ],
-    "webhookUrl": "https://2269f95c-d147-4370-b7b8-5ce731e2dc77.vistara.dev/api/webhook"
+    "webhookUrl": "https://2269f95cd1474370b7b85ce731e2dc77-053g-c0xk8f9dd-vistara.vercel.app/api/webhook"
   }
 }
