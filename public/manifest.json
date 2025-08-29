@@ -1,0 +1,14 @@
+{
+  "name": "AdSync Pulse",
+  "description": "AdSync Pulse is a Base Mini App built with Zara.",
+  "image": "https://dummyimage.com/1200x628/0a0b0d/ffffff.png&text=OG",
+  "external_url": "https://2269f95c-d147-4370-b7b8-5ce731e2dc77.vistara.dev",
+  "properties": {
+    "app": {
+      "name": "AdSync Pulse",
+      "description": "AdSync Pulse is a Base Mini App built with Zara.",
+      "url": "https://2269f95c-d147-4370-b7b8-5ce731e2dc77.vistara.dev",
+      "icon": "https://0co.to/images/zara-2.png"
+    }
+  }
+}
